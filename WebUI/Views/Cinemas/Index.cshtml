@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Cinema>
+
+@{
+    ViewData["Title"] = "List of Cinemas";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1 class="text-info mb-4">List of Cinemas</h1>
+        <table class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr class="text-center">
+                    <th>Picture</th>
+                    <th>Full Name</th>
+                    <th>Biography</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle img-scale" src="@item.Logo" alt="@item.Name" />
+                        </td>
+                        <td class="align-middle">@item.Name</td>
+
+                        @if (item.Description.Length >= 35)
+                        {
+                            <td class="align-middle">
+                                @item.Description.Substring(0, 35)...
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="align-middle">
+                                @item.Description...
+                            </td>
+                        }
+                        <td class="align-middle td-actions">
+                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details</a>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@await Html.PartialAsync("_CreateItem", "Cinemas")
+
+

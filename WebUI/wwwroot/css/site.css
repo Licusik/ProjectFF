@@ -1,0 +1,122 @@
+/* Общий стиль для текста */
+html {
+    font-size: 14px; /* Для небольших экранов */
+    font-family: 'Roboto', sans-serif; /* Использование современного шрифта */
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px; /* Для больших экранов */
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #f4f4f9; /* Легкий серый фон */
+    color: #333; /* Темный цвет текста */
+    line-height: 1.6;
+}
+
+/* Улучшение таблиц */
+.td-actions {
+    width: 301px;
+    text-align: center; /* Центрируем элементы в ячейке */
+}
+
+/* Стили для изображений */
+.img-movies {
+    height: 300px;
+    width: 200px;
+    object-fit: cover; /* Изображения заполняют блок, сохраняя пропорции */
+    border-radius: 10px; /* Скругляем углы */
+    transition: transform 0.3s ease-in-out; /* Плавный эффект масштабирования */
+}
+
+    .img-movies:hover {
+        transform: scale(1.05); /* Увеличиваем изображение при наведении */
+    }
+
+/* Стили для фиксированного футера */
+.footer-correct {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+/* Кнопка в правом нижнем углу */
+.btn-addItem {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    background-color: #ff5733; /* Яркая оранжевая кнопка */
+    color: white;
+    font-size: 18px;
+    padding: 15px 20px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень для кнопки */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Плавный эффект при наведении */
+}
+
+    .btn-addItem:hover {
+        background-color: #e04d29; /* Тёмный оттенок при наведении */
+        transform: translateY(-5px); /* Поднимаем кнопку */
+    }
+
+    .btn-addItem:active {
+        transform: translateY(2px); /* Немного опускаем кнопку при нажатии */
+    }
+
+/* Стили для картинок актеров */
+.img-actordetails-dimensions {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ddd; /* Рамка вокруг изображения */
+    transition: transform 0.3s ease-in-out; /* Плавный эффект масштабирования */
+}
+
+    .img-actordetails-dimensions:hover {
+        transform: scale(1.1); /* Увеличиваем картинку актера при наведении */
+    }
+
+/* Стили для изображений с масштабированием */
+.img-scale {
+    max-width: 100px;
+    transition: transform 0.3s ease-in-out; /* Плавный эффект */
+}
+
+    .img-scale:hover {
+        transform: scale(1.05); /* Легкое увеличение изображения при наведении */
+    }
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .btn-addItem {
+        padding: 12px 15px;
+        font-size: 16px; /* Меньший размер кнопки на мобильных устройствах */
+    }
+
+    .footer-correct {
+        font-size: 12px; /* Меньший размер текста в футере */
+    }
+
+    .img-movies {
+        width: 100%; /* Изображения на мобильных устройствах будут занимать всю ширину */
+        height: auto;
+    }
+}

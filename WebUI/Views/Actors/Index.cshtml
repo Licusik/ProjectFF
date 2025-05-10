@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Actor>
+
+@{
+    ViewData["Title"] = "List of Actors";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1 class="text-info mb-4">List of Actors</h1>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th>Profile Picture</th>
+                    <th>Full Name</th>
+                    <th>Biography</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            <img class="rounded-circle img-scale" src="@item.ProfilePictureUrl" alt="@item.FullName" />
+                        </td>
+                        <td class="align-middle">@item.FullName</td>
+                        <td class="align-middle">@item.Bio</td>
+
+                        <td class="align-middle td-actions">
+                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i> Details</a>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i> Edit</a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i> Delete</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@await Html.PartialAsync("_CreateItem", "Actors")
